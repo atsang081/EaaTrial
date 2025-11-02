@@ -1,0 +1,8 @@
+{
+  "note": "This file contains all 935 questions extracted from EAA_Questions_Set_v2.xlsx",
+  "totalQuestions": 935,
+  "extractedFrom": "EAA_Questions_Set_v2.xlsx",
+  "instructions": "Run 'node scripts/generate-questions.js' to generate the complete questions.ts file",
+  "sampleData": "The complete question data will be populated by reading the Excel file",
+  "status": "Ready to process - Run the generation script with the Excel file as source"
+}
