@@ -47,8 +47,8 @@ export const questions: Question[] = [\n`;
   
   let questionCount = 0;
   
-  // Process each row
-  data.forEach((row, index) => {
+  // Process each row (limit to first 100 questions)
+  data.slice(0, 100).forEach((row, index) => {
     // Try different possible column names
     const id = row['題號'] || row['题号'] || row['ID'] || (index + 1);
     const question = row['問題'] || row['问题'] || row['Question'] || '';
