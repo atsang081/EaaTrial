@@ -1,30 +1,12 @@
 #!/bin/bash
 
-echo "🚀 Generating questions.ts from Excel file..."
-echo ""
+echo "🚀 Importing all 928 questions from JSON..."
 
-# Check if Node.js is installed
-if ! command -v node &> /dev/null; then
-    echo "❌ Error: Node.js is not installed"
-    echo "Please install Node.js from https://nodejs.org/"
-    exit 1
-fi
-
-# Check if the Excel file exists
-if [ ! -f "src/assets/EAA_Questions_Set_v2.xlsx" ]; then
-    echo "❌ Error: Excel file not found at src/assets/EAA_Questions_Set_v2.xlsx"
-    exit 1
-fi
-
-# Run the generation script
-node scripts/generate-questions.js
+node scripts/auto-import.js
 
 if [ $? -eq 0 ]; then
-    echo ""
-    echo "✨ Done! The questions database has been updated with all 935 questions."
-    echo "📊 You can now use the exam app with the complete question set."
+    echo "✨ Done! All 928 questions are now loaded."
 else
-    echo ""
-    echo "❌ Something went wrong. Please check the error messages above."
+    echo "❌ Error during import"
     exit 1
 fi
