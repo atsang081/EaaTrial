@@ -1,4 +1,4 @@
-import { Question } from "@/data/questions";
+import { Question } from "@/types/question";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";

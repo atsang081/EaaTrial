@@ -1,4 +1,4 @@
-import { Question } from "@/data/questions";
+import { Question } from "@/types/question";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";

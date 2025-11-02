@@ -4,7 +4,7 @@ import { ExamQuestion } from "@/components/ExamQuestion";
 import { ExamTimer } from "@/components/ExamTimer";
 import { ExamReview } from "@/components/ExamReview";
 import { ExamResults } from "@/components/ExamResults";
-import { getRandomQuestions, Question } from "@/data/questions";
+import { Question } from "@/types/question";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -24,6 +24,7 @@ const EXAM_DURATION = 20 * 60; // 20 minutes in seconds
 const Index = () => {
   const [examState, setExamState] = useState<ExamState>("welcome");
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [startTime, setStartTime] = useState(0);
@@ -31,6 +32,45 @@ const Index = () => {
   const [showReview, setShowReview] = useState(false);
   const [showSubmitDialog, setShowSubmitDialog] = useState(false);
   const [hasShownFiveMinuteWarning, setHasShownFiveMinuteWarning] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load questions from JSON file
+  useEffect(() => {
+    const loadQuestions = async () => {
+      try {
+        const response = await fetch('/data/eaa-questions.json');
+        const data = await response.json();
+        
+        // Convert from JSON format to app format
+        const convertedQuestions: Question[] = data.questions.map((q: any) => ({
+          id: q.id,
+          question: q.question,
+          optionA: q.options.A,
+          optionB: q.options.B,
+          optionC: q.options.C,
+          optionD: q.options.D,
+          optionE: q.options.E,
+          correctAnswer: q.correctAnswer,
+          explanation: q.explanation
+        }));
+        
+        setAllQuestions(convertedQuestions);
+        setIsLoading(false);
+        toast.success(`已載入 ${convertedQuestions.length} 題問題`);
+      } catch (error) {
+        console.error('Failed to load questions:', error);
+        toast.error('載入問題失敗');
+        setIsLoading(false);
+      }
+    };
+    
+    loadQuestions();
+  }, []);
+
+  const getRandomQuestions = (count: number = 20): Question[] => {
+    const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, Math.min(count, allQuestions.length));
+  };
 
   useEffect(() => {
     if (examState === "exam" && startTime > 0) {
@@ -109,6 +149,17 @@ const Index = () => {
 
   const unansweredCount = questions.length - Object.keys(answers).length;
   const timeTaken = endTime > 0 ? Math.floor((endTime - startTime) / 1000) : 0;
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground">載入問題中...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
