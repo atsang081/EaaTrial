@@ -179,7 +179,7 @@ const Index = () => {
         <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5 py-4 sm:py-6 lg:py-8 px-3 sm:px-4">
           <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
             {/* Timer Header */}
-            <div className="flex justify-center sticky top-4 z-10">
+            <div className="flex justify-center">
               <ExamTimer
                 startTime={startTime}
                 duration={EXAM_DURATION}
