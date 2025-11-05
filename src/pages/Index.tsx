@@ -19,7 +19,7 @@ import {
 
 type ExamState = "welcome" | "exam" | "results";
 
-const EXAM_DURATION = 20 * 60; // 20 minutes in seconds
+const EXAM_DURATION = 60 * 60; // 60 minutes in seconds
 
 const Index = () => {
   const [examState, setExamState] = useState<ExamState>("welcome");
@@ -67,7 +67,7 @@ const Index = () => {
     loadQuestions();
   }, []);
 
-  const getRandomQuestions = (count: number = 20): Question[] => {
+  const getRandomQuestions = (count: number = 30): Question[] => {
     const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, Math.min(count, allQuestions.length));
   };
@@ -91,7 +91,7 @@ const Index = () => {
   }, [examState, startTime, hasShownFiveMinuteWarning]);
 
   const handleStartExam = () => {
-    const randomQuestions = getRandomQuestions(20);
+    const randomQuestions = getRandomQuestions(30);
     setQuestions(randomQuestions);
     setCurrentQuestionIndex(0);
     setAnswers({});
