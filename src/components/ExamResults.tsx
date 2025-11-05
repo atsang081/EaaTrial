@@ -178,6 +178,15 @@ export const ExamResults = ({
         {/* Action Buttons */}
         <Card className="p-5 sm:p-6">
           <div className="space-y-4 sm:space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <Button size="lg" onClick={onRetake} className="text-base sm:text-lg py-6">
+                重新考試
+              </Button>
+              <Button size="lg" variant="outline" onClick={onExit} className="text-base sm:text-lg py-6">
+                返回主頁
+              </Button>
+            </div>
+
             <div className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-muted/50 rounded-lg">
               <Mail className="w-6 h-6 sm:w-5 sm:h-5 text-primary mt-0.5" />
               <div className="flex-1">
@@ -189,15 +198,6 @@ export const ExamResults = ({
                   回報問題
                 </Button>
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              <Button size="lg" onClick={onRetake} className="text-base sm:text-lg py-6">
-                重新考試
-              </Button>
-              <Button size="lg" variant="outline" onClick={onExit} className="text-base sm:text-lg py-6">
-                返回主頁
-              </Button>
             </div>
           </div>
         </Card>
