@@ -138,14 +138,18 @@ const Index = () => {
       return;
     }
     
-    setQuestions(topicQuestions);
+    // Randomly select 20 questions (or all if less than 20)
+    const shuffled = [...topicQuestions].sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, Math.min(20, topicQuestions.length));
+    
+    setQuestions(selectedQuestions);
     setCurrentQuestionIndex(0);
     setAnswers({});
     setStartTime(Date.now());
     setEndTime(0);
     setExamState("exam");
     toast.success(`開始練習：主題 ${topicNumber}`, {
-      description: `共有 ${topicQuestions.length} 題`,
+      description: `共有 ${selectedQuestions.length} 題`,
     });
   };
 
