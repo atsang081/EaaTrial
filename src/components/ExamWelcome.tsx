@@ -32,7 +32,7 @@ export const ExamWelcome = ({ onStart, onStartPractice }: ExamWelcomeProps) => {
         </DialogTrigger>
         <DialogContent className="max-w-3xl max-h-[80vh]">
           <DialogHeader>
-            <DialogTitle className="text-2xl">EAA 模擬試卷應用程式 - 免責聲明</DialogTitle>
+            <DialogTitle className="text-2xl">EAA 模擬試卷應用程式（試用版）- 免責聲明</DialogTitle>
             <DialogDescription>
               使用本應用程式即表示您已同意以下所有條款
             </DialogDescription>
@@ -114,7 +114,7 @@ export const ExamWelcome = ({ onStart, onStartPractice }: ExamWelcomeProps) => {
               <div className="space-y-3">
                 <h3 className="text-lg font-bold">6. 錯誤回報</h3>
                 <p className="text-sm">如您發現錯誤，請聯繫我們：</p>
-                <p className="text-sm font-semibold">📧 電郵：cs@bitebite.app</p>
+                <p className="text-sm font-semibold">電子郵箱：cs@bitebite.app</p>
                 <p className="text-sm">請提供：題目編號（Question ID）、錯誤的詳細描述、正確答案或來源（如有）</p>
               </div>
 
@@ -143,12 +143,20 @@ export const ExamWelcome = ({ onStart, onStartPractice }: ExamWelcomeProps) => {
           </div>
           
           <div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3">EAA 模擬考試</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3">
+              EAA 模擬考試<span className="text-red-600 font-bold">（試用版）</span>
+            </h1>
             <p className="text-lg sm:text-xl text-muted-foreground">地產代理資格考試練習平台</p>
           </div>
 
           <div className="bg-muted/50 rounded-lg p-5 sm:p-6 space-y-4 sm:space-y-5 text-left">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">考試須知：</h2>
+            
+            <div className="bg-red-100 border border-red-300 rounded-lg p-4">
+              <p className="text-red-800 font-bold text-base sm:text-lg">
+                官方版本包含超過1300題傳統中文題目。
+              </p>
+            </div>
             
             <div className="space-y-4 sm:space-y-5">
               <div className="flex items-start gap-3 sm:gap-4">
