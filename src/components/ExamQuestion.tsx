@@ -141,13 +141,13 @@ export const ExamQuestion = ({
       {/* Fixed Navigation at Bottom */}
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg z-50">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 py-3">
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center justify-center">
             <Button
               variant="outline"
               size="sm"
               onClick={onPrevious}
               disabled={!canGoPrevious}
-              className="flex-1 h-12 text-sm sm:text-base"
+              className="flex-1 max-w-[30%] h-12 text-sm sm:text-base"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               上一題
@@ -156,7 +156,7 @@ export const ExamQuestion = ({
               variant="default"
               size="sm"
               onClick={onSubmit}
-              className="flex-1 h-12 text-sm sm:text-base bg-destructive hover:bg-destructive/90"
+              className="flex-[0.7] max-w-[21%] h-12 text-sm sm:text-base bg-destructive hover:bg-destructive/90"
             >
               提交考試
             </Button>
@@ -165,7 +165,7 @@ export const ExamQuestion = ({
               size="sm"
               onClick={onNext}
               disabled={!canGoNext}
-              className="flex-1 h-12 text-sm sm:text-base"
+              className="flex-1 max-w-[30%] h-12 text-sm sm:text-base"
             >
               下一題
               <ChevronRight className="w-4 h-4 ml-1" />

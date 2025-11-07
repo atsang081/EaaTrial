@@ -210,6 +210,19 @@ export const ExamWelcome = ({ onStart, onStartPractice }: ExamWelcomeProps) => {
           </div>
         </div>
       </Card>
+
+      {/* Footer Section */}
+      <div className="max-w-2xl w-full text-center space-y-2 pb-4">
+        <p className="text-sm text-muted-foreground">
+          意見回饋：<a href="mailto:cs@lazydads.net" className="text-primary hover:underline">cs@lazydads.net</a>
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Produced by Merlin Advisory Solution
+        </p>
+        <p className="text-xs text-muted-foreground">
+          © 2025 版權所有
+        </p>
+      </div>
     </div>
   );
 };
